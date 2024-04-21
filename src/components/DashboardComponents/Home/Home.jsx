@@ -1,11 +1,27 @@
-import { Typography } from "@mui/material";
+import { Card, CardContent, Container, Grid, Typography } from "@mui/material";
+import HomeTabs from "../HomeTabs";
 
 const Home = () => {
-    return (
-        <div>
-            <Typography>Home Components Content.................!</Typography>
-        </div>
-    );
+  return (
+    <div style={{ padding: "20px" }}>
+      <Container>
+        <Typography
+          variant="h5"
+          gutterBottom
+          sx={{ textAlign: "left", marginBottom: "15px", fontWeight: 600 }}
+        >
+          Push Notification
+        </Typography>
+        <Grid container alignItems="center" justifyContent="center">
+          <Card sx={{ minWidth: 275 }}>
+            <CardContent>
+                <HomeTabs />
+            </CardContent>
+          </Card>
+        </Grid>
+      </Container>
+    </div>
+  );
 };
 
 export default Home;
