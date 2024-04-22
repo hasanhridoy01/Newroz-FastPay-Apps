@@ -12,6 +12,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import SaveIcon from "@mui/icons-material/Save";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import SendIcon from "@mui/icons-material/Send";
+import Form from "./Form";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,7 +54,7 @@ const HomeTabs = () => {
     setValue(newValue);
   };
   return (
-    <div style={{ height: "400px", width: "1100px" }}>
+    <div style={{ height: "950px", width: "1100px" }}>
       <Box sx={{ width: "96%" }}>
         <Box sx={{ borderColor: "divider" }}>
           <Tabs
@@ -120,8 +121,10 @@ const HomeTabs = () => {
               </Card>
             </Grid>
             <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Card>
-                <CardContent></CardContent>
+              <Card sx={{ padding: '14px', borderRadius: "10px" }}>
+                <CardContent>
+                    <Form />
+                </CardContent>
               </Card>
             </Grid>
           </Grid>

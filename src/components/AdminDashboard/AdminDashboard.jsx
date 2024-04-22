@@ -562,7 +562,8 @@ function ResponsiveDrawer(props) {
             flexDirection: "column",
             justifyContent: "space-between",
             marginTop: '30px',
-            backgroundColor: '#EEEEF3'
+            backgroundColor: '#EEEEF3',
+            marginTop: '70px'
           }}
         >
           {toolbarContent}
