@@ -54,7 +54,7 @@ const HomeTabs = () => {
     setValue(newValue);
   };
   return (
-    <div style={{ height: "950px", width: "1100px" }}>
+    <div style={{ height: "auto", width: "1100px" }}>
       <Box sx={{ width: "96%" }}>
         <Box sx={{ borderColor: "divider" }}>
           <Tabs
@@ -121,7 +121,7 @@ const HomeTabs = () => {
               </Card>
             </Grid>
             <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Card sx={{ padding: '14px', borderRadius: "10px" }}>
+              <Card sx={{ padding: '14px', borderRadius: "10px", backgroundColor: '#EEEEF3' }}>
                 <CardContent>
                     <Form />
                 </CardContent>
