@@ -561,9 +561,7 @@ function ResponsiveDrawer(props) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            "@media (min-width: 1280px)": {
-              marginBottom: "500px",
-            },
+            marginTop: '30px',
             backgroundColor: '#EEEEF3'
           }}
         >
