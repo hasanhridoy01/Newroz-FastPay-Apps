@@ -2,24 +2,23 @@ import { Button, Divider, TextField, Typography } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import MenuItem from '@mui/material/MenuItem';
+import MenuItem from "@mui/material/MenuItem";
 
-const currencies = [
+import AddIcon from "@mui/icons-material/Add";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+
+const user = [
   {
-    value: "USD",
-    label: "$",
+    value: "User Group Title",
+    label: "User Group Title",
   },
   {
-    value: "EUR",
-    label: "€",
+    value: "User Group Title Goes",
+    label: "User Group Title Goes",
   },
   {
-    value: "BTC",
-    label: "฿",
-  },
-  {
-    value: "JPY",
-    label: "¥",
+    value: "User Group Title Goes Here",
+    label: "User Group Title Goes Here",
   },
 ];
 
@@ -78,23 +77,44 @@ const Form = () => {
         <Typography variant="body2">Define types of notification</Typography>
       </Divider>
 
-      <div className="" style={{ marginTop: '19px' }}>
+      <div className="" style={{ marginTop: "19px" }}>
         <TextField
           id="outlined-select-currency"
           select
-          label="Select"
-          defaultValue="EUR"
-          helperText="User Group"
-          sx={{ width: '240px' }}
+          label="Select User Group"
+          defaultValue="User Group Title"
+          helperText="Select User Group"
+          sx={{
+            width: "225px",
+            "& .MuiInputBase-input": {
+              height: "20px", // Adjust the height here
+              padding: "10px 12px", // Adjust the padding as needed
+              fontSize: '13px', // Adjust the font size here
+            },
+          }}
         >
-          {currencies.map((option) => (
+          {user.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
         </TextField>
-        <Button variant="contained" sx={{ marginRight: '10px', marginLeft: '10px' }}>Add</Button>
-        <Button variant="contained">Add</Button>
+        <Button
+          size="small"
+          variant="outlined"
+          startIcon={<CloudUploadIcon />}
+          sx={{ marginRight: "10px", marginLeft: "10px", height: "40px" }}
+        >
+          Upload
+        </Button>
+        <Button
+          size="small"
+          variant="contained"
+          startIcon={<AddIcon />}
+          sx={{ height: "40px" }}
+        >
+          Create
+        </Button>
       </div>
     </div>
   );

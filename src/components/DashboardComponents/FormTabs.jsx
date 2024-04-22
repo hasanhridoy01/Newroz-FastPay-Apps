@@ -170,7 +170,11 @@ const FormTabs = () => {
 
           <Divider
             textAlign="left"
-            sx={{ textTransform: "none", marginTop: "19px", marginBottom: '10px' }}
+            sx={{
+              textTransform: "none",
+              marginTop: "19px",
+              marginBottom: "10px",
+            }}
           >
             <Typography variant="body2">Set Target</Typography>
           </Divider>
@@ -235,11 +239,7 @@ const FormTabs = () => {
                 control={<Radio defaultChecked />}
                 label="button"
               />
-              <FormControlLabel
-                value="text"
-                control={<Radio />}
-                label="text"
-              />
+              <FormControlLabel value="text" control={<Radio />} label="text" />
             </RadioGroup>
           </div>
 
