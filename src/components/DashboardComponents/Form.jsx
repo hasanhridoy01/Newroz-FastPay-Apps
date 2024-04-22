@@ -1,7 +1,27 @@
-import { Divider, TextField, Typography } from "@mui/material";
+import { Button, Divider, TextField, Typography } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import MenuItem from '@mui/material/MenuItem';
+
+const currencies = [
+  {
+    value: "USD",
+    label: "$",
+  },
+  {
+    value: "EUR",
+    label: "€",
+  },
+  {
+    value: "BTC",
+    label: "฿",
+  },
+  {
+    value: "JPY",
+    label: "¥",
+  },
+];
 
 const Form = () => {
   return (
@@ -51,9 +71,31 @@ const Form = () => {
         </RadioGroup>
       </div>
 
-      <Divider textAlign="left" sx={{ textTransform: "none", marginTop: '14px', marginBottom: '14px' }}>
+      <Divider
+        textAlign="left"
+        sx={{ textTransform: "none", marginTop: "14px", marginBottom: "14px" }}
+      >
         <Typography variant="body2">Define types of notification</Typography>
       </Divider>
+
+      <div className="" style={{ marginTop: '19px' }}>
+        <TextField
+          id="outlined-select-currency"
+          select
+          label="Select"
+          defaultValue="EUR"
+          helperText="User Group"
+          sx={{ width: '240px' }}
+        >
+          {currencies.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <Button variant="contained" sx={{ marginRight: '10px', marginLeft: '10px' }}>Add</Button>
+        <Button variant="contained">Add</Button>
+      </div>
     </div>
   );
 };
