@@ -3,7 +3,7 @@ import HomeTabs from "../HomeTabs";
 
 const Home = () => {
   return (
-    <div style={{ padding: "20px", height: '1100px', width: '1170px' }}>
+    <div style={{ padding: "20px", height: '1130px', width: '1170px' }}>
       <Container>
         <Typography
           variant="h5"

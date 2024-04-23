@@ -14,28 +14,30 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Avatar, Button, Divider } from "@mui/material";
+import { Avatar, Button, Divider, Stack, Switch } from "@mui/material";
+
 import AddIcon from "@mui/icons-material/Add";
 import HomeIcon from "@mui/icons-material/Home";
 import Home from "../DashboardComponents/Home/Home";
-import Menu from "@mui/material/Menu";
+// import Menu from "@mui/material/Menu";
 import { styled, alpha } from "@mui/material/styles";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import MenuItem from "@mui/material/MenuItem";
+// import MenuItem from "@mui/material/MenuItem";
 import EditIcon from "@mui/icons-material/Edit";
-import InstallDesktopIcon from '@mui/icons-material/InstallDesktop';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import PeopleIcon from '@mui/icons-material/People';
-import QuizIcon from '@mui/icons-material/Quiz';
-import VideocamIcon from '@mui/icons-material/Videocam';
+import InstallDesktopIcon from "@mui/icons-material/InstallDesktop";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import PeopleIcon from "@mui/icons-material/People";
+import QuizIcon from "@mui/icons-material/Quiz";
+import VideocamIcon from "@mui/icons-material/Videocam";
 
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
-const drawerWidth = 260;
+const drawerWidth = 290;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
@@ -44,6 +46,17 @@ function ResponsiveDrawer(props) {
   const [selectedItem, setSelectedItem] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const [isHome, setIsHome] = React.useState(false);
+  const [isUser, setIsUser] = React.useState(false);
+  const [isManager, setIsManager] = React.useState(false);
+  const [isHow, setIsHow] = React.useState(false);
+  const [isActivePromotion, setIsActivePromotion] = React.useState(false);
+  const [isActiveNotification, setIsActiveNotification] = React.useState(false);
+  const [isActiveManagerRole, setIsActiveManagerRole] = React.useState(false);
+  const [isActiveManagerAccess, setIsActiveManagerAccess] =
+    React.useState(false);
+  const [collapsed, setCollapsed] = React.useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -115,11 +128,64 @@ function ResponsiveDrawer(props) {
     setSelectedItem(index);
   };
 
+  // menu style methods.............................!
+  const handleStyle = (index) => {
+    if (index === 0) {
+      setIsActivePromotion(true);
+    } else {
+      setIsActivePromotion(false);
+    }
+
+    if (index === 1) {
+      setIsActiveNotification(true);
+    } else {
+      setIsActiveNotification(false);
+    }
+
+    if (index === 2) {
+      setIsActiveManagerRole(true);
+    } else {
+      setIsActiveManagerRole(false);
+    }
+
+    if (index === 3) {
+      setIsActiveManagerAccess(true);
+    } else {
+      setIsActiveManagerAccess(false);
+    }
+
+    if (index === 4) {
+      setIsHome(true);
+    } else {
+      setIsHome(false);
+    }
+
+    if (index === 5) {
+      setIsUser(true);
+    } else {
+      setIsUser(false);
+    }
+
+    if (index === 6) {
+      setIsManager(true);
+    } else {
+      setIsManager(false);
+    }
+
+    if (index === 7) {
+      setIsHow(true);
+    } else {
+      setIsHow(false);
+    }
+  };
+
+  const label = { inputProps: { "aria-label": "Switch demo" } };
+
   const toolbarContent = selectedItem !== null && (
     <Toolbar>
       {selectedItem === 0 ? (
         <Home />
-      ) : selectedItem === 1 ? (
+      ) : selectedItem === 4 ? (
         <div>Content of Item 2</div>
       ) : null}
     </Toolbar>
@@ -155,14 +221,15 @@ function ResponsiveDrawer(props) {
           <Button
             variant="contained"
             startIcon={<AddIcon />}
-            sx={{ backgroundColor: "#ff0052", }}
+            sx={{ backgroundColor: "#ff0052" }}
           >
             <Typography sx={{ textTransform: "none" }}>Create New</Typography>
           </Button>
         </div>
       </div>
-      <Toolbar sx={{ marginTop: "12px" }}>
-        <List>
+      <Toolbar sx={{ marginTop: "50px" }}>
+        {/* <List>
+          
           <ListItem onClick={() => handleListItemClick(0)}>
             <ListItemButton>
               <ListItemIcon sx={{ minWidth: "33px" }}>
@@ -173,7 +240,8 @@ function ResponsiveDrawer(props) {
               </ListItemText>
             </ListItemButton>
           </ListItem>
-          {/* set Dropdown */}
+
+          
           <ListItem sx={{ marginTop: '0px' }}>
             <ListItemButton>
               <div>
@@ -426,7 +494,7 @@ function ResponsiveDrawer(props) {
             </ListItemButton>
           </ListItem>
           
-          {/* normal Menu */}
+          
           <ListItem onClick={() => handleListItemClick(0)}>
             <ListItemButton>
               <ListItemIcon sx={{ minWidth: "33px" }}>
@@ -460,7 +528,103 @@ function ResponsiveDrawer(props) {
             </ListItemButton>
           </ListItem>
 
-        </List>
+        </List> */}
+
+        <Sidebar backgroundColor="#fff" collapsed={collapsed}>
+          <Menu sx={{ backgroundColor: "#fff" }} transitionDuration={1000}>
+            <Stack spacing={2}>
+              <MenuItem
+                icon={<HomeIcon />}
+                onClick={() => handleStyle(4)}
+                style={{
+                  backgroundColor: isHome ? "#ECF7FF" : "#fff",
+                }}
+              >
+                Home
+              </MenuItem>
+              <SubMenu
+                onClick={() => handleStyle(0)}
+                style={{
+                  backgroundColor: isActivePromotion ? "#ECF7FF" : "#fff",
+                }}
+                label="Promotions"
+                icon={<InstallDesktopIcon />}
+              >
+                <MenuItem> Pie charts</MenuItem>
+                <MenuItem> Line charts</MenuItem>
+                <MenuItem> Bar charts</MenuItem>
+              </SubMenu>
+              <SubMenu
+                onClick={() => handleStyle(1)}
+                style={{
+                  backgroundColor: isActiveNotification ? "#ECF7FF" : "#fff",
+                }}
+                label="Push Notification"
+                icon={<NotificationsNoneIcon />}
+              >
+                <MenuItem onClick={() => handleListItemClick(0)}>
+                  Create Notification
+                </MenuItem>
+                <MenuItem> Line charts</MenuItem>
+                <MenuItem> Bar charts</MenuItem>
+              </SubMenu>
+              <SubMenu
+                label="Manager Role"
+                icon={<ManageAccountsIcon />}
+                onClick={() => handleStyle(2)}
+                style={{
+                  backgroundColor: isActiveManagerRole ? "#ECF7FF" : "#fff",
+                }}
+              >
+                <MenuItem> Pie charts</MenuItem>
+                <MenuItem> Line charts</MenuItem>
+                <MenuItem> Bar charts</MenuItem>
+              </SubMenu>
+              <SubMenu
+                label="Manager Access"
+                icon={<LockOpenIcon />}
+                onClick={() => handleStyle(3)}
+                style={{
+                  backgroundColor: isActiveManagerAccess ? "#ECF7FF" : "#fff",
+                }}
+              >
+                <MenuItem> Pie charts</MenuItem>
+                <MenuItem> Line charts</MenuItem>
+                <MenuItem> Bar charts</MenuItem>
+              </SubMenu>
+              <MenuItem
+                icon={<PeopleIcon />}
+                onClick={() => handleStyle(5)}
+                style={{
+                  backgroundColor: isUser ? "#ECF7FF" : "#fff",
+                }}
+              >
+                {" "}
+                User Group
+              </MenuItem>
+              <MenuItem
+                icon={<QuizIcon />}
+                onClick={() => handleStyle(6)}
+                style={{
+                  backgroundColor: isManager ? "#ECF7FF" : "#fff",
+                }}
+              >
+                {" "}
+                Manager PAQ
+              </MenuItem>
+              <MenuItem
+                icon={<VideocamIcon />}
+                onClick={() => handleStyle(7)}
+                style={{
+                  backgroundColor: isHow ? "#ECF7FF" : "#fff",
+                }}
+              >
+                {" "}
+                How to Videos
+              </MenuItem>
+            </Stack>
+          </Menu>
+        </Sidebar>
       </Toolbar>
     </div>
   );
@@ -470,7 +634,7 @@ function ResponsiveDrawer(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -501,6 +665,7 @@ function ResponsiveDrawer(props) {
             <span style={{ color: "#ff0052" }}>Fast</span>
             <span style={{ color: "#000" }}>Pay</span>
           </Typography>
+          <Switch onClick={() => setCollapsed(!collapsed)} {...label} />
           <Avatar
             sx={{ marginLeft: "auto" }}
             alt="Remy Sharp"
@@ -510,7 +675,7 @@ function ResponsiveDrawer(props) {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }, }}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -561,9 +726,8 @@ function ResponsiveDrawer(props) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            marginTop: '30px',
-            backgroundColor: '#EEEEF3',
-            marginTop: '70px'
+            backgroundColor: "#EEEEF3",
+            marginTop: "70px",
           }}
         >
           {toolbarContent}
