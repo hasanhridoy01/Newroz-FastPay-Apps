@@ -36,6 +36,7 @@ import QuizIcon from "@mui/icons-material/Quiz";
 import VideocamIcon from "@mui/icons-material/Videocam";
 
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import Table from "../Table/Table";
 
 const drawerWidth = 290;
 
@@ -185,7 +186,12 @@ function ResponsiveDrawer(props) {
     <Toolbar>
       {selectedItem === 0 ? (
         <Home />
-      ) : selectedItem === 4 ? (
+      ) : selectedItem === 1 ? (
+        <div>Content of Item 2</div>
+      ) : null}
+      {selectedItem === 4 ? (
+        <div className="">hello</div>
+      ) : selectedItem === 1 ? (
         <div>Content of Item 2</div>
       ) : null}
     </Toolbar>
@@ -220,10 +226,11 @@ function ResponsiveDrawer(props) {
         >
           <Button
             variant="contained"
+            size="large"
             startIcon={<AddIcon />}
-            sx={{ backgroundColor: "#ff0052" }}
+            sx={{ backgroundColor: "#ff0052", width: '247px' }}
           >
-            <Typography sx={{ textTransform: "none" }}>Create New</Typography>
+            <Typography variant="h6" sx={{ textTransform: "none" }}>Create New</Typography>
           </Button>
         </div>
       </div>
@@ -535,7 +542,10 @@ function ResponsiveDrawer(props) {
             <Stack spacing={2}>
               <MenuItem
                 icon={<HomeIcon />}
-                onClick={() => handleStyle(4)}
+                onClick={() => {
+                  handleListItemClick(4);
+                  handleStyle(4);
+                }}
                 style={{
                   backgroundColor: isHome ? "#ECF7FF" : "#fff",
                 }}
@@ -717,7 +727,11 @@ function ResponsiveDrawer(props) {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: "100%",
+          // Use media query to adjust width for small screens
+          "@media (min-width: 600px)": {
+            width: `calc(100% - ${drawerWidth}px)`,
+          },
         }}
       >
         <div
