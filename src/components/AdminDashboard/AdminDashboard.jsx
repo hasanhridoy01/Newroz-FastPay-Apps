@@ -81,6 +81,13 @@ function ResponsiveDrawer(props) {
     }
   };
 
+  // handleNewMenu.....................!
+  const handleNewMenu = (e) => {
+    e.preventDefault();
+
+    alert();  
+  }
+
   const StyledMenu = styled((props) => (
     <Menu
       elevation={0}
@@ -198,7 +205,7 @@ function ResponsiveDrawer(props) {
   );
 
   const drawer = (
-    <div>
+    <div style={{ overflow: 'hidden'}}>
       <Toolbar>
         <IconButton
           aria-label="open drawer"
@@ -227,8 +234,14 @@ function ResponsiveDrawer(props) {
           <Button
             variant="contained"
             size="large"
+            onClick={handleNewMenu}
             startIcon={<AddIcon />}
-            sx={{ backgroundColor: "#ff0052", width: '247px' }}
+            tabIndex={0}
+            sx={{ backgroundColor: "#ff0052", width: '247px', border: 'none', '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              border: 'none'
+            } }}
           >
             <Typography variant="h6" sx={{ textTransform: "none" }}>Create New</Typography>
           </Button>
@@ -538,7 +551,7 @@ function ResponsiveDrawer(props) {
         </List> */}
 
         <Sidebar backgroundColor="#fff" collapsed={collapsed}>
-          <Menu sx={{ backgroundColor: "#fff" }} transitionDuration={1000}>
+          <Menu sx={{ backgroundColor: "#fff" }} transitionDuration={500}>
             <Stack spacing={2}>
               <MenuItem
                 icon={<HomeIcon />}
@@ -547,7 +560,7 @@ function ResponsiveDrawer(props) {
                   handleStyle(4);
                 }}
                 style={{
-                  backgroundColor: isHome ? "#ECF7FF" : "#fff",
+                  backgroundColor: isHome ? "rgba(204, 204, 255, 0.5)" : "#fff",
                 }}
               >
                 Home
@@ -555,7 +568,7 @@ function ResponsiveDrawer(props) {
               <SubMenu
                 onClick={() => handleStyle(0)}
                 style={{
-                  backgroundColor: isActivePromotion ? "#ECF7FF" : "#fff",
+                  backgroundColor: isActivePromotion ? "rgba(204, 204, 255, 0.5)" : "#fff",
                 }}
                 label="Promotions"
                 icon={<InstallDesktopIcon />}
@@ -567,7 +580,7 @@ function ResponsiveDrawer(props) {
               <SubMenu
                 onClick={() => handleStyle(1)}
                 style={{
-                  backgroundColor: isActiveNotification ? "#ECF7FF" : "#fff",
+                  backgroundColor: isActiveNotification ? "rgba(204, 204, 255, 0.5)" : "#fff",
                 }}
                 label="Push Notification"
                 icon={<NotificationsNoneIcon />}
@@ -583,7 +596,7 @@ function ResponsiveDrawer(props) {
                 icon={<ManageAccountsIcon />}
                 onClick={() => handleStyle(2)}
                 style={{
-                  backgroundColor: isActiveManagerRole ? "#ECF7FF" : "#fff",
+                  backgroundColor: isActiveManagerRole ? "rgba(204, 204, 255, 0.5)" : "#fff",
                 }}
               >
                 <MenuItem> Pie charts</MenuItem>
@@ -595,7 +608,7 @@ function ResponsiveDrawer(props) {
                 icon={<LockOpenIcon />}
                 onClick={() => handleStyle(3)}
                 style={{
-                  backgroundColor: isActiveManagerAccess ? "#ECF7FF" : "#fff",
+                  backgroundColor: isActiveManagerAccess ? "rgba(204, 204, 255, 0.5)" : "#fff",
                 }}
               >
                 <MenuItem> Pie charts</MenuItem>
@@ -606,7 +619,7 @@ function ResponsiveDrawer(props) {
                 icon={<PeopleIcon />}
                 onClick={() => handleStyle(5)}
                 style={{
-                  backgroundColor: isUser ? "#ECF7FF" : "#fff",
+                  backgroundColor: isUser ? "rgba(204, 204, 255, 0.5)" : "#fff",
                 }}
               >
                 {" "}
@@ -616,7 +629,7 @@ function ResponsiveDrawer(props) {
                 icon={<QuizIcon />}
                 onClick={() => handleStyle(6)}
                 style={{
-                  backgroundColor: isManager ? "#ECF7FF" : "#fff",
+                  backgroundColor: isManager ? "rgba(204, 204, 255, 0.5)" : "#fff",
                 }}
               >
                 {" "}
@@ -626,7 +639,7 @@ function ResponsiveDrawer(props) {
                 icon={<VideocamIcon />}
                 onClick={() => handleStyle(7)}
                 style={{
-                  backgroundColor: isHow ? "#ECF7FF" : "#fff",
+                  backgroundColor: isHow ? "rgba(204, 204, 255, 0.5)" : "#fff",
                 }}
               >
                 {" "}
